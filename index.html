@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CoinMarketProject</title>
+        <link rel="stylesheet" href="styles/main.css">
+
+
+    </head>
+    <body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">Coin Market Cap</li>
+            </ol>
+        </nav>
+        
+        <!--Cards style html-->
+        <div id="cards" class="block">
+            <div class="container">
+                <div class="row" id="coins"></div>       
+            </div>
+        </div>
+
+            
+
+        <script type="text/javascript">
+
+        //My API key
+            var apikey = {
+                key: '7235f14d-a71e-4965-8462-14b6fbdf0963'
+            }
+        //GET Fetch Requisition
+        fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=' + 
+                apikey.key)
+                .then((response) => {
+                    if(!response.ok) throw new Error('Erro ao executar a requisição, status ' + response.status);
+                    return response.json();
+            })
+            .then((api) => {
+                
+                var texto = "";
+                // Get 10 coins and symbols
+                for(let i = 0; i < 8; i++){
+
+
+
+                //Show API information
+
+                    texto = texto + `
+
+                                    <div class="col-lg-3 mb-6 mb-lg-3">
+                                        <a href="#" class="destaque">
+                                            <div class="img-container mb-3">
+                                                <img src="assets/cripto.jpg" class="img-fluid" alt="coins">
+                                            </div>
+                                            <h5 class="mt-2">${api.data[i].name}</h5>
+                                            <p class="mb-0">${api.data[i].symbol}</p>
+                                            <p class="mb-0">${api.data[i].last_historical_data}</p>
+                                        </a>
+                                    </div>  
+                        `;
+
+                        document.getElementById("coins").innerHTML = texto;
+
+                }
+            })
+            .catch((error) => {
+                console.error(error.message);
+            });
+        </script>
+    </body>
+</html>
