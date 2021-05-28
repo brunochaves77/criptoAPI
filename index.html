@@ -10,26 +10,30 @@
 
     </head>
     <body>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Coin Market Cap</li>
-            </ol>
-        </nav>
+        <header>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Coin Market Cap</li>
+                </ol>
+            </nav>
+        </header>
+
         
         <!--Cards style html-->
-        <div id="cards" class="block">
-            <div class="container">
-                <div class="row" id="coins"></div>       
+        <main>
+            <div id="cards" class="block">
+                <div class="container">
+                    <div class="row" id="coins"></div>       
+                </div>
             </div>
-        </div>
+        </main>
 
-            
 
         <script type="text/javascript">
 
         //My API key
             var apikey = {
-                key: '7235f14d-a71e-4965-8462-14b6fbdf0963'
+                key: '### API KEY HERE! ###'
             }
         //GET Fetch Requisition
         fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=' + 
